@@ -26,11 +26,6 @@ pipeline{
                 archiveArtifacts 'target/junit-4.13-SNAPSHOT.jar'
             }
         }
-        stage(mail){
-            steps{
-                mail bcc: '', body: '''Hi,
-Your build is sucess''', cc: 'vgangarapu@verinon.com', from: '', replyTo: '', subject: 'Build sucess', to: 'mohanreddi88@gmail.com'
-            }
-        }
+        
     }
 }
