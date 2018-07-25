@@ -21,11 +21,6 @@ pipeline{
                 junit 'target/surefire-reports/*.xml'
             }
         }
-        stage(artifact){
-            steps{
-                archiveArtifacts 'target/junit-4.13-SNAPSHOT.jar'
-            }
-        }
         
     }
 }
