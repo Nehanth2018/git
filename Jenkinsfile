@@ -50,7 +50,7 @@ Your build is sucess''', cc: 'vgangarapu@verinon.com', from: '', replyTo: '', su
         stage(sonar) {
             steps('SonarQube analysis') {
                 withSonarQubeEnv('mysonar') {
-                    
+			sh 'mvn clean package sonar:sonar'                   
                 }
                 
             }
