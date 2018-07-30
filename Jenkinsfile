@@ -32,5 +32,28 @@ pipeline{
 Your build is sucess''', cc: 'vgangarapu@verinon.com', from: '', replyTo: '', subject: 'Build sucess', to: 'mohanreddi88@gmail.com'
             }
         }
-    }
+	stage('upload') {
+           steps {
+              script { 
+                 def server = Artifactory.server 'Artifactory'
+                 def uploadSpec = """{
+                    "files": [{
+                       "pattern": "/var/lib/jenkins/workspace/Pipelineproject 1/target/junit-4.13-SNAPSHOT.jar",
+                       "target": "Test/"
+                    }]
+                 }"""
+
+                 server.upload(uploadSpec) 
+               }
+            }
+        }
+        stage(sonar) {
+            steps('SonarQube analysis') {
+                withSonarQubeEnv('mysonar') {
+                    
+                }
+                
+            }
+        }
+    } 
 }
